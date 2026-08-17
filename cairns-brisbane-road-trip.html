@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cairns → Brisbane · Road Trip</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Work+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+  :root{
+    --green:#1E5B3E;
+    --green-dark:#123B28;
+    --teal:#0C7C82;
+    --coral:#F2542D;
+    --sand:#F5E6C8;
+    --ink:#10242B;
+    --paper:#FBF7EE;
+    --asphalt:#262524;
+    --line: repeating-linear-gradient(to bottom, #F5E6C8 0 14px, transparent 14px 28px);
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+  }
+
+  h1,h2,h3, .display{
+    font-family:'Bebas Neue', sans-serif;
+    letter-spacing:0.02em;
+    font-weight:400;
+  }
+  .mono{ font-family:'IBM Plex Mono', monospace; }
+
+  a{ color:inherit; }
+  img{ max-width:100%; display:block; }
+  .wrap{ max-width:960px; margin:0 auto; padding:0 24px; }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:
+      linear-gradient(180deg, rgba(16,36,43,0.15), rgba(16,36,43,0.55)),
+      linear-gradient(135deg, var(--teal) 0%, var(--green) 55%, var(--green-dark) 100%);
+    color:var(--paper);
+    padding:64px 24px 56px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::after{
+    content:"";
+    position:absolute; left:0; right:0; bottom:0; height:10px;
+    background: repeating-linear-gradient(90deg, var(--sand) 0 36px, transparent 36px 68px);
+    opacity:0.85;
+  }
+  .plate{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    background:var(--sand);
+    color:var(--green-dark);
+    font-family:'IBM Plex Mono', monospace;
+    font-weight:600;
+    font-size:13px;
+    letter-spacing:0.12em;
+    padding:7px 14px;
+    border-radius:4px;
+    border:2px solid var(--green-dark);
+    text-transform:uppercase;
+  }
+  .hero h1{
+    font-size:clamp(48px, 10vw, 96px);
+    line-height:0.92;
+    margin:20px 0 6px;
+    text-transform:uppercase;
+  }
+  .hero h1 span{ color:var(--sand); }
+  .hero .sub{
+    font-size:clamp(15px, 2.4vw, 18px);
+    max-width:520px;
+    opacity:0.92;
+    font-weight:500;
+    margin-bottom:28px;
+  }
+  .stat-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:14px;
+  }
+  .stat{
+    background:rgba(251,247,238,0.1);
+    border:1px solid rgba(251,247,238,0.35);
+    border-radius:10px;
+    padding:12px 18px;
+    min-width:120px;
+  }
+  .stat .n{ font-family:'Bebas Neue'; font-size:30px; line-height:1; color:var(--sand);}
+  .stat .l{ font-size:11px; letter-spacing:0.08em; text-transform:uppercase; opacity:0.85; margin-top:4px;}
+
+  /* ---------- SECTION HEADERS ---------- */
+  section{ padding:52px 0; }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--coral);
+    font-weight:600;
+    margin-bottom:6px;
+  }
+  .sec-title{
+    font-size:clamp(30px, 5vw, 44px);
+    text-transform:uppercase;
+    color:var(--green-dark);
+    margin-bottom:8px;
+  }
+  .sec-desc{ max-width:560px; color:#3c4d47; font-size:15px; margin-bottom:36px;}
+
+  /* ---------- TRAVEL STRIP (flights + van, top facts) ---------- */
+  .facts{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(210px,1fr));
+    gap:14px;
+  }
+  .fact-card{
+    background:#fff;
+    border:1px solid #E4DCC6;
+    border-left:5px solid var(--teal);
+    border-radius:10px;
+    padding:18px 18px;
+  }
+  .fact-card.alt{ border-left-color:var(--coral); }
+  .fact-card .k{
+    font-family:'IBM Plex Mono'; font-size:11px; text-transform:uppercase;
+    letter-spacing:0.08em; color:#7a8f88; margin-bottom:8px;
+  }
+  .fact-card .v{ font-size:17px; font-weight:700; color:var(--ink); }
+  .fact-card .v small{ display:block; font-weight:500; font-size:13px; color:#5b6b66; margin-top:2px;}
+
+  /* ---------- ROAD TIMELINE ---------- */
+  .road{
+    position:relative;
+    padding-left:46px;
+  }
+  .road::before{
+    content:"";
+    position:absolute;
+    left:14px; top:6px; bottom:6px;
+    width:14px;
+    background:var(--asphalt);
+    border-radius:8px;
+    z-index:1;
+  }
+  .road::after{
+    content:"";
+    position:absolute;
+    left:20px; top:6px; bottom:6px;
+    width:2px;
+    background:var(--line);
+    z-index:1;
+  }
+  .day{
+    position:relative;
+    padding-bottom:34px;
+  }
+  .day:last-child{ padding-bottom:0; }
+  .marker{
+    position:absolute;
+    left:-46px; top:0;
+    width:38px; height:38px;
+    border-radius:50%;
+    background:var(--coral);
+    border:3px solid var(--paper);
+    box-shadow:0 0 0 2px var(--asphalt);
+    color:#fff;
+    font-family:'Bebas Neue';
+    font-size:16px;
+    display:flex; align-items:center; justify-content:center;
+    z-index:2;
+  }
+  .day.rest .marker{ background:var(--teal); }
+  .day.arrive .marker{ background:#7a8f88; }
+  .card{
+    background:#fff;
+    border:1px solid #E4DCC6;
+    border-radius:12px;
+    padding:18px 20px;
+    margin-left:6px;
+  }
+  .day-head{
+    display:flex; align-items:baseline; justify-content:space-between; flex-wrap:wrap; gap:6px 14px;
+    margin-bottom:8px;
+  }
+  .day-title{ font-size:22px; text-transform:uppercase; color:var(--green-dark); }
+  .day-date{ font-family:'IBM Plex Mono'; font-size:12px; color:var(--coral); font-weight:600; letter-spacing:0.04em;}
+  .tag{
+    display:inline-block;
+    font-family:'IBM Plex Mono';
+    font-size:10.5px;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    background:var(--sand);
+    color:var(--green-dark);
+    border-radius:5px;
+    padding:3px 8px;
+    margin:2px 6px 0 0;
+  }
+  .stops{ margin-top:10px; font-size:14.5px; color:#3c4d47; }
+  .stops b{ color:var(--ink); }
+
+  /* ---------- BUDGET TICKET ---------- */
+  .ticket{
+    background:#fff;
+    border:2px dashed var(--green-dark);
+    border-radius:14px;
+    max-width:520px;
+    padding:26px 26px 20px;
+    position:relative;
+  }
+  .ticket h3{
+    font-size:26px; text-transform:uppercase; color:var(--green-dark); margin-bottom:2px;
+  }
+  .ticket .tick-sub{ font-family:'IBM Plex Mono'; font-size:11.5px; color:#7a8f88; margin-bottom:16px; text-transform:uppercase; letter-spacing:0.05em;}
+  .line-item{
+    display:flex; justify-content:space-between; align-items:baseline;
+    padding:9px 0; border-bottom:1px dashed #E4DCC6;
+    font-size:14.5px;
+  }
+  .line-item span:last-child{ font-family:'IBM Plex Mono'; font-weight:600; }
+  .line-item.total{
+    border-bottom:none; border-top:2px solid var(--green-dark); margin-top:6px; padding-top:14px;
+  }
+  .line-item.total span:first-child{ font-family:'Bebas Neue'; font-size:20px; letter-spacing:0.02em; }
+  .line-item.total span:last-child{ font-family:'Bebas Neue'; font-size:26px; color:var(--coral); }
+  .perp{ text-align:center; margin-top:14px; font-family:'IBM Plex Mono'; font-size:12px; color:#7a8f88; }
+  .perp b{ color:var(--ink); font-size:14px; }
+  .footnote{ margin-top:10px; font-size:11.5px; color:#9a9284; text-align:center; }
+
+  .extras-note{
+    max-width:520px; margin-top:18px; font-size:13.5px; color:#5b6b66;
+    background:var(--sand); border-radius:10px; padding:14px 16px;
+  }
+  .extras-note b{ color:var(--green-dark); }
+
+  /* ---------- GOOD TO KNOW ---------- */
+  .tips{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(230px,1fr));
+    gap:14px;
+  }
+  .tip{
+    background:var(--green-dark);
+    color:var(--paper);
+    border-radius:12px;
+    padding:18px;
+  }
+  .tip .t-icon{ font-family:'Bebas Neue'; font-size:13px; letter-spacing:0.1em; color:var(--sand); text-transform:uppercase; margin-bottom:6px; }
+  .tip p{ font-size:13.5px; opacity:0.92; }
+
+  footer{
+    background:var(--asphalt);
+    color:#B8B2A6;
+    padding:28px 24px 34px;
+    text-align:center;
+    font-size:12.5px;
+    font-family:'IBM Plex Mono', monospace;
+  }
+  footer b{ color:var(--paper); }
+
+  @media (max-width:520px){
+    .hero{ padding:48px 18px 44px; }
+    section{ padding:40px 0; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="hero">
+    <div class="wrap">
+      <span class="plate">QLD · Rego 26-09 → 04-10</span>
+      <h1>Cairns <span>→</span> Brisbane</h1>
+      <div class="sub">9 days, ~1,700km up the Bruce Highway in a JUCY campervan — reef, rainforest, islands, and a lot of free beaches along the way.</div>
+      <div class="stat-row">
+        <div class="stat"><div class="n">9</div><div class="l">Days on the road</div></div>
+        <div class="stat"><div class="n">1,700</div><div class="l">Kilometres</div></div>
+        <div class="stat"><div class="n">3</div><div class="l">Non-driving days</div></div>
+        <div class="stat"><div class="n">$810</div><div class="l">≈ AUD per person</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+
+    <section id="logistics">
+      <div class="eyebrow">Before the van</div>
+      <h2 class="sec-title">Getting there</h2>
+      <p class="sec-desc">Landing the night before pickup turned out cheaper than a same-day connection once flight prices were compared — so we fly in a day early.</p>
+      <div class="facts">
+        <div class="fact-card">
+          <div class="k">Flight out</div>
+          <div class="v">SYD → CNS<small>Jetstar JQ956 · Fri 25 Sep · 19:15–22:25</small></div>
+        </div>
+        <div class="fact-card">
+          <div class="k">Night 0</div>
+          <div class="v">Cairns hostel<small>Before van pickup, ≈$35pp</small></div>
+        </div>
+        <div class="fact-card alt">
+          <div class="k">Van pickup</div>
+          <div class="v">Cairns, 11:00am<small>Sat 26 Sep · JUCY Sunseeker</small></div>
+        </div>
+        <div class="fact-card alt">
+          <div class="k">Van drop-off</div>
+          <div class="v">Brisbane, 2:00pm<small>Sun 4 Oct</small></div>
+        </div>
+        <div class="fact-card">
+          <div class="k">Flight back</div>
+          <div class="v">BNE → SYD<small>Jetstar JQ825 · Sun 4 Oct · 19:40–22:20</small></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="route">
+      <div class="eyebrow">Day by day</div>
+      <h2 class="sec-title">The route</h2>
+      <p class="sec-desc">Mixed pace — some long driving days, three days where the van doesn't move at all. Order follows the highway south.</p>
+
+      <div class="road">
+
+        <div class="day arrive">
+          <div class="marker">0</div>
+          <div class="card">
+            <div class="day-head">
+              <div class="day-title">Arrive Cairns</div>
+              <div class="day-date">FRI 25 SEP</div>
+            </div>
+            <span class="tag">No van yet</span><span class="tag">Hostel night</span><span class="tag">0h driving</span>
+            <div class="stops">Land 22:25, settle into a hostel. Early night — pickup is 11am tomorrow.</div>
+          </div>
+        </div>
+
+        <div class="day">
+          <div class="marker">1</div>
+          <div class="card">
+            <div class="day-head">
+              <div class="day-title">Cairns</div>
+              <div class="day-date">SAT 26 SEP</div>
+            </div>
+            <span class="tag">Van pickup 11am</span><span class="tag">Free</span><span class="tag">0h driving</span>
+            <div class="stops">Collect the van, grocery run, evening at the <b>Cairns Esplanade</b> lagoon + night markets. Sleep in Cairns.</div>
+          </div>
+        </div>
+
+        <div class="day">
+          <div class="marker">2</div>
+          <div class="card">
+            <div class="day-head">
+              <div class="day-title">Mission Beach</div>
+              <div class="day-date">SUN 27 SEP</div>
+            </div>
+            <span class="tag">Driving day</span><span class="tag">Free swim stops</span><span class="tag">≈2h driving</span>
+            <div class="stops">Break up the drive at <b>Josephine Falls</b> and <b>Babinda Boulders</b> — free natural swimming holes. Quiet beach town, cheap camping, cassowary country.</div>
+          </div>
+        </div>
+
+        <div class="day">
+          <div class="marker">3</div>
+          <div class="card">
+            <div class="day-head">
+              <div class="day-title">Wallaman Falls</div>
+              <div class="day-date">MON 28 SEP</div>
+            </div>
+            <span class="tag">Free</span><span class="tag">Detour ~1h</span><span class="tag">≈2h driving</span>
+            <div class="stops">Head inland into <b>Girringun National Park</b> for Wallaman Falls — Australia's tallest single-drop waterfall. Arrive, set up camp nearby, first swim at the base.</div>
+          </div>
+        </div>
+
+        <div class="day rest">
+          <div class="marker">4</div>
+          <div class="card">
+            <div class="day-head">
+              <div class="day-title">Wallaman Falls</div>
+              <div class="day-date">TUE 29 SEP</div>
+            </div>
+            <span class="tag">Non-driving day</span><span class="tag">Free</span><span class="tag">0h driving</span>
+            <div class="stops">Van stays put — a full day to actually enjoy it rather than rush through. Swim, short rainforest walks, take in the lookout without the reef-tour crowds.</div>
+          </div>
+        </div>
+
+        <div class="day">
+          <div class="marker">5</div>
+          <div class="card">
+            <div class="day-head">
+              <div class="day-title">Airlie Beach</div>
+              <div class="day-date">WED 30 SEP</div>
+            </div>
+            <span class="tag">Driving day</span><span class="tag">Free lagoon</span><span class="tag">≈4.5h driving</span>
+            <div class="stops">Back down to the coast via Townsville, then <b>Bowen</b> for the Big Mango and Horseshoe Bay, then on to Airlie — base for the Whitsundays. <i>Optional: certified divers can add the <b>SS Yongala wreck dive</b> near Townsville, rated one of the world's best wreck dives (≈$250–300pp, book ahead). Also worth booking a Heart Reef scenic flight for tomorrow (fixed-wing ≈$250–300pp, helicopter ≈$400–700pp).</i></div>
+          </div>
+        </div>
+
+        <div class="day rest">
+          <div class="marker">6</div>
+          <div class="card">
+            <div class="day-head">
+              <div class="day-title">Whitsundays</div>
+              <div class="day-date">THU 1 OCT</div>
+            </div>
+            <span class="tag">Non-driving day</span><span class="tag">Optional $150–250</span><span class="tag">0h driving</span>
+            <div class="stops">Van stays put. Splurge on a <b>Whitehaven Beach</b> sailing day, or keep it free with Airlie's lookouts and lagoon. <i>Optional: Heart Reef scenic flight over Whitehaven, Hill Inlet &amp; the reef — fixed-wing ≈$250–300pp, helicopter ≈$400–700pp.</i></div>
+          </div>
+        </div>
+
+        <div class="day">
+          <div class="marker">7</div>
+          <div class="card">
+            <div class="day-head">
+              <div class="day-title">Yeppoon / Rockhampton</div>
+              <div class="day-date">FRI 2 OCT</div>
+            </div>
+            <span class="tag">Long driving day</span><span class="tag">Detour optional</span><span class="tag">≈6h driving</span>
+            <div class="stops">Longest leg. Optional detour into <b>Eungella National Park</b> for wild platypus spotting.</div>
+          </div>
+        </div>
+
+        <div class="day">
+          <div class="marker">8</div>
+          <div class="card">
+            <div class="day-head">
+              <div class="day-title">Agnes Water / 1770</div>
+              <div class="day-date">SAT 3 OCT</div>
+            </div>
+            <span class="tag">Driving day</span><span class="tag">Cheap + quiet</span><span class="tag">≈5h driving</span>
+            <div class="stops">The last spot on the east coast to catch sunrise <i>and</i> sunset over the ocean. Push on toward Noosa, ready for a short final run into Brisbane.</div>
+          </div>
+        </div>
+
+        <div class="day">
+          <div class="marker">9</div>
+          <div class="card">
+            <div class="day-head">
+              <div class="day-title">Brisbane</div>
+              <div class="day-date">SUN 4 OCT</div>
+            </div>
+            <span class="tag">Van drop-off 2pm</span><span class="tag">Flight 19:40</span><span class="tag">≈2h driving</span>
+            <div class="stops">Short drive down from Noosa, drop the van by 2pm. A few free hours left in the city before the 19:40 flight — South Bank, the river, or just a proper sit-down meal that isn't cooked in the van.</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="budget">
+      <div class="eyebrow">Split 4 ways</div>
+      <h2 class="sec-title">The numbers</h2>
+      <p class="sec-desc">Cheapest of the airline direct or Trip.com, no third-party resellers. Van quote is JUCY's actual price.</p>
+
+      <div class="ticket">
+        <h3>Trip cost</h3>
+        <div class="tick-sub">Per person · group of 4</div>
+        <div class="line-item"><span>JUCY van (9 days, ÷4)</span><span>A$300</span></div>
+        <div class="line-item"><span>Zero excess insurance (RentalCover, ÷4)</span><span>A$32</span></div>
+        <div class="line-item"><span>Flights SYD–CNS–BNE–SYD</span><span>A$443</span></div>
+        <div class="line-item"><span>Cairns hostel, night before pickup</span><span>A$35</span></div>
+        <div class="line-item total"><span>Per person</span><span>≈A$810</span></div>
+        <div class="perp">Group of 4 total: <b>≈A$3,237</b></div>
+      </div>
+    </section>
+
+    <section id="budget-extras">
+      <div class="eyebrow">Not in the ticket above</div>
+      <h2 class="sec-title">On-road costs</h2>
+      <p class="sec-desc">Fuel, food, and campsites — paid as you go, not part of the upfront booking.</p>
+
+      <div class="ticket">
+        <h3>On the road</h3>
+        <div class="tick-sub">Per person · group of 4</div>
+        <div class="line-item"><span>Fuel (~1,700km, split across the van)</span><span>A$90–100</span></div>
+        <div class="line-item"><span>Food (self-catering)</span><span>A$130–150</span></div>
+        <div class="line-item"><span>Campsites (mix of free + powered)</span><span>A$40–70</span></div>
+        <div class="line-item total"><span>Per person</span><span>≈A$260–320</span></div>
+        <div class="perp">Group of 4 total: <b>≈A$1,040–1,280</b></div>
+        <div class="footnote">*excl. any optional add-ons (scenic flight, dive, Whitehaven sailing)</div>
+      </div>
+    </section>
+
+    <section id="budget-total">
+      <div class="eyebrow">Everything combined</div>
+      <h2 class="sec-title">Grand total</h2>
+      <p class="sec-desc">Booking costs plus on-road costs, per person and for the group. Optional add-ons (scenic flight, dive, Whitehaven sailing) are extra.</p>
+
+      <div class="ticket">
+        <h3>Full trip</h3>
+        <div class="tick-sub">Per person · group of 4</div>
+        <div class="line-item"><span>Van, flights, insurance &amp; hostel night</span><span>A$810</span></div>
+        <div class="line-item"><span>Fuel, food &amp; campsites</span><span>A$260–320</span></div>
+        <div class="line-item total"><span>Per person</span><span>≈A$1,070–1,130</span></div>
+        <div class="perp">Group of 4 total: <b>≈A$4,280–4,520</b></div>
+      </div>
+    </section>
+
+    <section id="tips">
+      <div class="eyebrow">Good to know</div>
+      <h2 class="sec-title">Before you book</h2>
+      <div class="tips">
+        <div class="tip">
+          <div class="t-icon">Book early</div>
+          <p>These dates fall inside QLD school holidays — vans, reef tours and flights all get pricier and sell out closer to the date.</p>
+        </div>
+        <div class="tip">
+          <div class="t-icon">Reef, your way</div>
+          <p>No boat tour booked in by default — reef time is now optional (Whitsundays scenic flight, SS Yongala dive) so nobody's stuck on a touristy pontoon trip they didn't want.</p>
+        </div>
+        <div class="tip">
+          <div class="t-icon">Cook in the van</div>
+          <p>Self-catering is the single biggest saving vs. eating out. The Sunseeker comes with a kitchen kit and gas cartridges.</p>
+        </div>
+        <div class="tip">
+          <div class="t-icon">Free camps</div>
+          <p>Use WikiCamps or CamperMate to find free/cheap overnight spots — mix them with a few powered caravan park nights.</p>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <footer>
+    <div><b>CAIRNS → BRISBANE</b> · 26 Sep – 4 Oct 2026</div>
+    <div style="margin-top:6px;">Made for the crew · double-check live prices before booking</div>
+  </footer>
+
+</body>
+</html>
