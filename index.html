@@ -194,6 +194,13 @@
     padding:18px 20px;
     margin-left:6px;
   }
+  .day-photo{
+    width:100%; height:180px; object-fit:cover;
+    border-radius:8px; margin-bottom:12px; display:block;
+    background:var(--sand);
+  }
+  .day-photo-row{ display:flex; gap:8px; margin-bottom:12px; }
+  .day-photo-row .day-photo{ margin-bottom:0; flex:1; height:150px; }
   .day-head{
     display:flex; align-items:baseline; justify-content:space-between; flex-wrap:wrap; gap:6px 14px;
     margin-bottom:8px;
@@ -348,6 +355,7 @@
         <div class="day">
           <div class="marker">1</div>
           <div class="card">
+            <img class="day-photo" src="images/cairns-esplanade.jpg" alt="Cairns Esplanade" loading="lazy">
             <div class="day-head">
               <div class="day-title">Cairns</div>
               <div class="day-date">SAT 26 SEP</div>
@@ -360,6 +368,10 @@
         <div class="day">
           <div class="marker">2</div>
           <div class="card">
+            <div class="day-photo-row">
+              <img class="day-photo" src="images/josephine-falls.jpg" alt="Josephine Falls" loading="lazy">
+              <img class="day-photo" src="images/babinda-boulders.jpg" alt="Babinda Boulders" loading="lazy">
+            </div>
             <div class="day-head">
               <div class="day-title">Mission Beach</div>
               <div class="day-date">SUN 27 SEP</div>
@@ -372,6 +384,7 @@
         <div class="day">
           <div class="marker">3</div>
           <div class="card">
+            <img class="day-photo" src="images/wallaman-falls.jpg" alt="Wallaman Falls" loading="lazy">
             <div class="day-head">
               <div class="day-title">Wallaman Falls</div>
               <div class="day-date">MON 28 SEP</div>
@@ -384,6 +397,7 @@
         <div class="day rest">
           <div class="marker">4</div>
           <div class="card">
+            <img class="day-photo" src="images/wallaman-falls.jpg" alt="Wallaman Falls" loading="lazy">
             <div class="day-head">
               <div class="day-title">Wallaman Falls</div>
               <div class="day-date">TUE 29 SEP</div>
@@ -396,6 +410,7 @@
         <div class="day">
           <div class="marker">5</div>
           <div class="card">
+            <img class="day-photo" src="images/airlie-beach.jpg" alt="Airlie Beach" loading="lazy">
             <div class="day-head">
               <div class="day-title">Airlie Beach</div>
               <div class="day-date">WED 30 SEP</div>
@@ -408,6 +423,7 @@
         <div class="day rest">
           <div class="marker">6</div>
           <div class="card">
+            <img class="day-photo" src="images/whitsundays.jpg" alt="Whitsundays" loading="lazy">
             <div class="day-head">
               <div class="day-title">Whitsundays</div>
               <div class="day-date">THU 1 OCT</div>
@@ -420,6 +436,7 @@
         <div class="day">
           <div class="marker">7</div>
           <div class="card">
+            <img class="day-photo" src="images/eungella.jpg" alt="Eungella National Park" loading="lazy">
             <div class="day-head">
               <div class="day-title">Yeppoon / Rockhampton</div>
               <div class="day-date">FRI 2 OCT</div>
@@ -432,6 +449,7 @@
         <div class="day">
           <div class="marker">8</div>
           <div class="card">
+            <img class="day-photo" src="images/agnes-water.jpg" alt="Agnes Water" loading="lazy">
             <div class="day-head">
               <div class="day-title">Agnes Water / 1770</div>
               <div class="day-date">SAT 3 OCT</div>
@@ -444,6 +462,7 @@
         <div class="day">
           <div class="marker">9</div>
           <div class="card">
+            <img class="day-photo" src="images/brisbane.jpg" alt="Brisbane" loading="lazy">
             <div class="day-head">
               <div class="day-title">Brisbane</div>
               <div class="day-date">SUN 4 OCT</div>
