@@ -249,6 +249,17 @@
   .perp{ text-align:center; margin-top:14px; font-family:'IBM Plex Mono'; font-size:12px; color:#7a8f88; }
   .perp b{ color:var(--ink); font-size:14px; }
   .footnote{ margin-top:10px; font-size:11.5px; color:#9a9284; text-align:center; }
+  .ticket-group-label{
+    font-family:'IBM Plex Mono'; font-size:11px; text-transform:uppercase;
+    letter-spacing:0.08em; color:var(--teal); font-weight:700;
+    margin-top:18px; margin-bottom:2px;
+  }
+  .ticket-group-label:first-of-type{ margin-top:0; }
+  .line-item.subtotal{
+    font-weight:700; border-top:1px solid #E4DCC6; border-bottom:none;
+    padding-top:9px; margin-top:2px; margin-bottom:6px;
+  }
+  .line-item.subtotal span:last-child{ font-family:'IBM Plex Mono'; font-weight:800; color:var(--coral); }
 
   .extras-note{
     max-width:520px; margin-top:18px; font-size:13.5px; color:#5b6b66;
@@ -300,7 +311,6 @@
         <div class="stat"><div class="n">9</div><div class="l">Days on the road</div></div>
         <div class="stat"><div class="n">1,700</div><div class="l">Kilometres</div></div>
         <div class="stat"><div class="n">3</div><div class="l">Non-driving days</div></div>
-        <div class="stat"><div class="n">$879</div><div class="l">≈ AUD per person</div></div>
       </div>
     </div>
   </div>
@@ -485,12 +495,24 @@
       <div class="ticket">
         <h3>Trip cost</h3>
         <div class="tick-sub">Per person · group of 4</div>
+
+        <div class="ticket-group-label">The basics</div>
         <div class="line-item"><span>Spaceship Beta van (9 days, incl. accessory pack &amp; tall sleeper, ÷4)</span><span>A$370</span></div>
         <div class="line-item"><span>Zero excess insurance (RentalCover, ÷4)</span><span>A$31</span></div>
         <div class="line-item"><span>Flights SYD–CNS–BNE–SYD</span><span>A$443</span></div>
         <div class="line-item"><span>Cairns hostel, night before pickup</span><span>A$35</span></div>
-        <div class="line-item total"><span>Per person</span><span>≈A$879</span></div>
-        <div class="perp">Group of 4 total: <b>≈A$3,515</b></div>
+        <div class="line-item subtotal"><span>Subtotal</span><span>≈A$879</span></div>
+
+        <div class="ticket-group-label">On the road</div>
+        <div class="line-item"><span>Fuel (~1,700km, split across the van)</span><span>A$90–100</span></div>
+        <div class="line-item"><span>Food (self-catering)</span><span>A$130–150</span></div>
+        <div class="line-item"><span>Campsites (mix of free + powered)</span><span>A$40–70</span></div>
+        <div class="line-item subtotal"><span>Subtotal</span><span>≈A$260–320</span></div>
+
+        <div class="ticket-group-label">Grand total</div>
+        <div class="line-item total"><span>Per person</span><span>≈A$1,139–1,199</span></div>
+        <div class="perp">Group of 4 total: <b>≈A$4,556–4,796</b></div>
+        <div class="footnote">*excl. any optional add-ons (scenic flight, dive, Whitehaven sailing)</div>
       </div>
     </section>
 
@@ -526,38 +548,6 @@
       </div>
 
       <div class="footnote" style="margin-top:14px;">Going from 4 to 3 people costs each person roughly A$145–150 more overall — mostly the van, not the day-to-day spending.</div>
-    </section>
-
-    <section id="budget-extras">
-      <div class="eyebrow">Not in the ticket above</div>
-      <h2 class="sec-title">On-road costs</h2>
-      <p class="sec-desc">Fuel, food, and campsites — paid as you go, not part of the upfront booking.</p>
-
-      <div class="ticket">
-        <h3>On the road</h3>
-        <div class="tick-sub">Per person · group of 4</div>
-        <div class="line-item"><span>Fuel (~1,700km, split across the van)</span><span>A$90–100</span></div>
-        <div class="line-item"><span>Food (self-catering)</span><span>A$130–150</span></div>
-        <div class="line-item"><span>Campsites (mix of free + powered)</span><span>A$40–70</span></div>
-        <div class="line-item total"><span>Per person</span><span>≈A$260–320</span></div>
-        <div class="perp">Group of 4 total: <b>≈A$1,040–1,280</b></div>
-        <div class="footnote">*excl. any optional add-ons (scenic flight, dive, Whitehaven sailing)</div>
-      </div>
-    </section>
-
-    <section id="budget-total">
-      <div class="eyebrow">Everything combined</div>
-      <h2 class="sec-title">Grand total</h2>
-      <p class="sec-desc">Booking costs plus on-road costs, per person and for the group. Optional add-ons (scenic flight, dive, Whitehaven sailing) are extra.</p>
-
-      <div class="ticket">
-        <h3>Full trip</h3>
-        <div class="tick-sub">Per person · group of 4</div>
-        <div class="line-item"><span>Van, flights, insurance &amp; hostel night</span><span>A$879</span></div>
-        <div class="line-item"><span>Fuel, food &amp; campsites</span><span>A$260–320</span></div>
-        <div class="line-item total"><span>Per person</span><span>≈A$1,139–1,199</span></div>
-        <div class="perp">Group of 4 total: <b>≈A$4,556–4,796</b></div>
-      </div>
     </section>
 
     <section id="tips">
